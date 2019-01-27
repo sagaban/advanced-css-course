@@ -36,7 +36,7 @@ body {
     background-position: top;
     position: relative;
 
-    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%)
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
 }
 
 .logo-box{
@@ -113,7 +113,7 @@ Two general types:
     /* Finish */
     100% {
         opacity: 1;
-        transform: translateX(0);
+        transform: translate(0);
     }
 }
 
@@ -129,7 +129,19 @@ Two general types:
     /* Finish */
     100% {
         opacity: 1;
-        transform: translateX(0);
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    /* Finish */
+    100% {
+        opacity: 1;
+        transform: translate(0);
     }
 }
 
@@ -145,6 +157,7 @@ Two general types:
     border-radius: 100px;
     /* 'transition' has to be defined in the initial state */
     transition: all .2s;
+    position: relative;
 }
 
 .btn:hover {
@@ -161,4 +174,35 @@ Two general types:
 .btn-white {
     background-color: #fff;
     color: #777;
+}
+
+.btn::after {
+    content: '';    /* mandatory */
+    display: inline-block;
+    /* Same as the button */
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    /* behind the actual button */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    
+    transition: all .4s;
+}
+
+.btn-white::after{
+    background-color: #fff;
+}
+
+.btn:hover::after {
+    transform: scaleX(1.5) scaleY(1.6);
+    opacity: 0;
+}
+
+.btn-animated{
+    animation: moveInBottom .5s ease-out .75s;
+    /* Applies the properties of the 0% animation */
+    animation-fill-mode: backwards;
 }
