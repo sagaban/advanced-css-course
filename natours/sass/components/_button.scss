@@ -1,0 +1,62 @@
+
+.btn{
+    &:link,
+    &:visited {
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1.5rem 4rem;
+        display: inline-block;
+        /* to center it, the parent has 'text-align: center' */
+    
+        border-radius: 10rem;
+        /* 'transition' has to be defined in the initial state */
+        transition: all .2s;
+        position: relative;
+    }
+    
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 1rem 2rem rgba($color-back, .2);
+
+        &::after {
+            transform: scaleX(1.5) scaleY(1.6);
+            opacity: 0;
+        }
+    }
+    
+    &:active { // Clicked
+        transform: translateY(-1px);
+        box-shadow: 0 .5rem 1rem rgba($color-back, .2);
+    }
+    
+    &--white {
+        background-color: $color-white;
+        color: $color-gray-dark;
+
+        &::after {
+            background-color: $color-white;
+        }
+    }
+    
+    &::after {
+        content: ''; // mandatory
+        display: inline-block;
+        /* Same as the button */
+        height: 100%;
+        width: 100%;
+        border-radius: 10rem;
+        /* behind the actual button */
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+    
+        transition: all .4s;
+    }
+    
+    &--animated {
+        animation: moveInBottom .5s ease-out .75s;
+        /* Applies the properties of the 0% animation */
+        animation-fill-mode: backwards;
+    }
+}

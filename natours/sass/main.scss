@@ -1,10 +1,17 @@
-$color-primary: #55c57a;
-$color-primary-light: #7ed56f;
-$color-primary-dark: #28b485;
+@import "abstracts/functions"; 
+@import "abstracts/mixins"; 
+@import "abstracts/variables"; 
 
-$color-gray-dark: #777;
-$color-white: #fff;
-$color-back: #000;
+@import "base/animations"; 
+@import "base/base";
+@import "base/typography"; 
+@import "base/utilities";
+
+@import "components/button";
+
+@import "layout/header";
+
+@import "pages/home";
 
 /* The new Normalizer. Older, no longer necessary */
 *,
@@ -18,210 +25,6 @@ $color-back: #000;
 html {
     /* Use relative unit to respect user configuration */
     /* 100% / 16 pixels = 62.5% == 10px by default */
+    /* This defines what 1rem is */
     font-size: 62.5%;
-}
-
-/*  As font properties as usually inherited, we use body, not '*'
-    Every element inherited fro body will use this font props    */
-body {
-    font-family: "Lato", sans-serif;
-    font-weight: 400;
-    font-size: 1.6rem;
-    line-height: 1.7;
-    color: $color-gray-dark;
-    padding: 3rem;
-
-    box-sizing: border-box;
-}
-
-.header {
-    height: 95vh;
-    /* The viewport height */
-    background-image: linear-gradient(to right bottom,
-        rgba($color-primary-light, 0.8),
-        rgba($color-primary-dark, 0.8)),
-        url(../img/hero.jpg);
-    background-size: cover;
-    background-position: top;
-    position: relative;
-
-    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-
-    &__logo-box {
-        position: absolute;
-        top: 4rem;
-        /* from parent with position relative*/
-        left: 4rem;
-    }
-    
-    &__logo {
-        height: 3.5rem;
-    }
-
-    &__text-box {
-        position: absolute;
-        top: 40%;
-        left: 50%;
-        /* Set the center point to the center of the box, not the top left
-           corner */
-        transform: translate(-50%, -50%);
-        text-align: center;
-    }
-}
-
-
-
-.heading-primary {
-    color: $color-white;
-    text-transform: uppercase;
-
-    /* hack to avoid little shaking in animations*/
-    backface-visibility: hidden;
-    margin-bottom: 6rem;
-    
-    &--main {
-        display: block;
-        font-size: 6rem;
-        font-weight: 400;
-        letter-spacing: 3.5rem;
-    
-        animation-name: moveInLeft;
-        animation-duration: 1s;
-        /* animation-delay: 3s; */
-        /* animation-iteration-count: 3; */
-        animation-timing-function: ease-out;
-    }
-    
-    &--sub {
-        display: block;
-        font-size: 2rem;
-        font-weight: 700;
-        letter-spacing: 1.75rem;
-        margin-left: -1.75rem;
-    
-        animation: moveInRight 1s ease-out;
-    }
-}
-
-
-/*
-Two general types:
-1- define the animation
-2- simple use transition 
-*/
-@keyframes moveInLeft {
-
-    /* Start */
-    0% {
-        opacity: 0;
-        transform: translateX(-10rem);
-        /* transform: translateX(-10rem) rotate(-20deg); */
-    }
-
-    /* 60% {
-        transform: rotate(20deg);;
-    } */
-    80% {
-        transform: translateX(1rem)
-    }
-
-    /* Finish */
-    100% {
-        opacity: 1;
-        transform: translate(0);
-    }
-}
-
-@keyframes moveInRight {
-
-    /* Start */
-    0% {
-        opacity: 0;
-        transform: translateX(10rem);
-    }
-
-    80% {
-        transform: translateX(-1rem)
-    }
-
-    /* Finish */
-    100% {
-        opacity: 1;
-        transform: translate(0);
-    }
-}
-
-@keyframes moveInBottom {
-    0% {
-        opacity: 0;
-        transform: translateY(3rem);
-    }
-
-    /* Finish */
-    100% {
-        opacity: 1;
-        transform: translate(0);
-    }
-}
-
-.btn{
-    &:link,
-    &:visited {
-        text-transform: uppercase;
-        text-decoration: none;
-        padding: 1.5rem 4rem;
-        display: inline-block;
-        /* to center it, the parent has 'text-align: center' */
-    
-        border-radius: 10rem;
-        /* 'transition' has to be defined in the initial state */
-        transition: all .2s;
-        position: relative;
-    }
-    
-    &:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 1rem 2rem rgba($color-back, .2);
-
-        &::after {
-            transform: scaleX(1.5) scaleY(1.6);
-            opacity: 0;
-        }
-    }
-    
-    &:active { // Clicked
-        transform: translateY(-1px);
-        box-shadow: 0 .5rem 1rem rgba($color-back, .2);
-    }
-    
-    &--white {
-        background-color: $color-white;
-        color: $color-gray-dark;
-
-        &::after {
-            background-color: $color-white;
-        }
-    }
-    
-    &::after {
-        content: ''; // mandatory
-        display: inline-block;
-        /* Same as the button */
-        height: 100%;
-        width: 100%;
-        border-radius: 10rem;
-        /* behind the actual button */
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -1;
-    
-        transition: all .4s;
-    }
-    
-    &--animated {
-        animation: moveInBottom .5s ease-out .75s;
-        /* Applies the properties of the 0% animation */
-        animation-fill-mode: backwards;
-    }
 }
