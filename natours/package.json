@@ -1,0 +1,13 @@
+{
+  "name": "Natours",
+  "version": "1.0.0",
+  "description": "CSS Advance Course project one",
+  "main": "index.js",
+  "scripts": {
+    "compile:sass": "node-sass sass/main.scss css/style.css"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "node-sass": "^4.11.0"
+  }
+}

@@ -1,16 +1,11 @@
-/*
-COLORS:
-
-Light green: #7ed56f
-Medium green: #55c57a
-Dark green: #28b485
-
-*/
+$color-primary: #55c57a;
+$color-primary-light: #7ed56f;
+$color-primary-dark: #28b485;
 
 /* The new Normalizer. Older, no longer necessary */
 *,
 *::after,
-*::before { 
+*::before {
     margin: 0;
     padding: 0;
     box-sizing: inherit;
@@ -36,12 +31,12 @@ body {
 }
 
 .header {
-    height: 95vh; /* The viewport height */
-    background-image: linear-gradient(
-      to right bottom,
-      #7ed56fcc,
-      #28b485cc),
-    url(../img/hero.jpg);
+    height: 95vh;
+    /* The viewport height */
+    background-image: linear-gradient(to right bottom,
+        rgba($color-primary-light, 0.8),
+        rgba($color-primary-dark, 0.8)),
+        url(../img/hero.jpg);
     background-size: cover;
     background-position: top;
     position: relative;
@@ -49,13 +44,14 @@ body {
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
 }
 
-.header__logo-box{
+.header__logo-box {
     position: absolute;
-    top: 4rem;  /* from parent with position relative*/
+    top: 4rem;
+    /* from parent with position relative*/
     left: 4rem;
 }
 
-.header__logo{
+.header__logo {
     height: 3.5rem;
 }
 
@@ -73,7 +69,7 @@ body {
     text-align: center;
 }
 
-.heading-primary{
+.heading-primary {
     color: #fff;
     text-transform: uppercase;
 
@@ -81,19 +77,21 @@ body {
     backface-visibility: hidden;
     margin-bottom: 6rem;
 }
-.heading-primary--main{
+
+.heading-primary--main {
     display: block;
     font-size: 6rem;
     font-weight: 400;
     letter-spacing: 3.5rem;
-    
+
     animation-name: moveInLeft;
     animation-duration: 1s;
     /* animation-delay: 3s; */
     /* animation-iteration-count: 3; */
     animation-timing-function: ease-out;
 }
-.heading-primary--sub{
+
+.heading-primary--sub {
     display: block;
     font-size: 2rem;
     font-weight: 700;
@@ -109,18 +107,21 @@ Two general types:
 2- simple use transition 
 */
 @keyframes moveInLeft {
+
     /* Start */
     0% {
         opacity: 0;
         transform: translateX(-10rem);
         /* transform: translateX(-10rem) rotate(-20deg); */
     }
+
     /* 60% {
         transform: rotate(20deg);;
     } */
     80% {
         transform: translateX(1rem)
     }
+
     /* Finish */
     100% {
         opacity: 1;
@@ -129,16 +130,19 @@ Two general types:
 }
 
 @keyframes moveInRight {
+
     /* Start */
     0% {
         opacity: 0;
         transform: translateX(10rem);
     }
-    80% { 
+
+    80% {
         transform: translateX(-1rem)
     }
+
     /* Finish */
-    100% { 
+    100% {
         opacity: 1;
         transform: translate(0);
     }
@@ -149,6 +153,7 @@ Two general types:
         opacity: 0;
         transform: translateY(3rem);
     }
+
     /* Finish */
     100% {
         opacity: 1;
@@ -162,7 +167,7 @@ Two general types:
     text-transform: uppercase;
     text-decoration: none;
     padding: 1.5rem 4rem;
-    display: inline-block; 
+    display: inline-block;
     /* to center it, the parent has 'text-align: center' */
 
     border-radius: 10rem;
@@ -188,7 +193,7 @@ Two general types:
 }
 
 .btn::after {
-    content: '';    /* mandatory */
+    content: ''; // mandatory
     display: inline-block;
     /* Same as the button */
     height: 100%;
@@ -203,7 +208,7 @@ Two general types:
     transition: all .4s;
 }
 
-.btn-white::after{
+.btn-white::after {
     background-color: #fff;
 }
 
@@ -212,7 +217,7 @@ Two general types:
     opacity: 0;
 }
 
-.btn--animated{
+.btn--animated {
     animation: moveInBottom .5s ease-out .75s;
     /* Applies the properties of the 0% animation */
     animation-fill-mode: backwards;
