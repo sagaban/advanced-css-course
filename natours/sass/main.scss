@@ -4,6 +4,7 @@ $color-primary-dark: #28b485;
 
 $color-gray-dark: #777;
 $color-white: #fff;
+$color-back: #000;
 
 /* The new Normalizer. Older, no longer necessary */
 *,
@@ -45,32 +46,30 @@ body {
     position: relative;
 
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
+    &__logo-box {
+        position: absolute;
+        top: 4rem;
+        /* from parent with position relative*/
+        left: 4rem;
+    }
+    
+    &__logo {
+        height: 3.5rem;
+    }
+
+    &__text-box {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        /* Set the center point to the center of the box, not the top left
+           corner */
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
 }
 
-.header__logo-box {
-    position: absolute;
-    top: 4rem;
-    /* from parent with position relative*/
-    left: 4rem;
-}
 
-.header__logo {
-    height: 3.5rem;
-}
-
-/* .logo:hover{
-    animation: moveInRight 1s ease-out;
-} */
-
-.header__text-box {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    /* Set the center point to the center of the box, not the top left
-       corner */
-    transform: translate(-50%, -50%);
-    text-align: center;
-}
 
 .heading-primary {
     color: $color-white;
@@ -79,30 +78,31 @@ body {
     /* hack to avoid little shaking in animations*/
     backface-visibility: hidden;
     margin-bottom: 6rem;
+    
+    &--main {
+        display: block;
+        font-size: 6rem;
+        font-weight: 400;
+        letter-spacing: 3.5rem;
+    
+        animation-name: moveInLeft;
+        animation-duration: 1s;
+        /* animation-delay: 3s; */
+        /* animation-iteration-count: 3; */
+        animation-timing-function: ease-out;
+    }
+    
+    &--sub {
+        display: block;
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: 1.75rem;
+        margin-left: -1.75rem;
+    
+        animation: moveInRight 1s ease-out;
+    }
 }
 
-.heading-primary--main {
-    display: block;
-    font-size: 6rem;
-    font-weight: 400;
-    letter-spacing: 3.5rem;
-
-    animation-name: moveInLeft;
-    animation-duration: 1s;
-    /* animation-delay: 3s; */
-    /* animation-iteration-count: 3; */
-    animation-timing-function: ease-out;
-}
-
-.heading-primary--sub {
-    display: block;
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 1.75rem;
-    margin-left: -1.75rem;
-
-    animation: moveInRight 1s ease-out;
-}
 
 /*
 Two general types:
@@ -164,64 +164,64 @@ Two general types:
     }
 }
 
-/* link pseudo class*/
-.btn:link,
-.btn:visited {
-    text-transform: uppercase;
-    text-decoration: none;
-    padding: 1.5rem 4rem;
-    display: inline-block;
-    /* to center it, the parent has 'text-align: center' */
+.btn{
+    &:link,
+    &:visited {
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1.5rem 4rem;
+        display: inline-block;
+        /* to center it, the parent has 'text-align: center' */
+    
+        border-radius: 10rem;
+        /* 'transition' has to be defined in the initial state */
+        transition: all .2s;
+        position: relative;
+    }
+    
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 1rem 2rem rgba($color-back, .2);
 
-    border-radius: 10rem;
-    /* 'transition' has to be defined in the initial state */
-    transition: all .2s;
-    position: relative;
-}
+        &::after {
+            transform: scaleX(1.5) scaleY(1.6);
+            opacity: 0;
+        }
+    }
+    
+    &:active { // Clicked
+        transform: translateY(-1px);
+        box-shadow: 0 .5rem 1rem rgba($color-back, .2);
+    }
+    
+    &--white {
+        background-color: $color-white;
+        color: $color-gray-dark;
 
-.btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 1rem 2rem #0003;
-}
-
-/* Clicked */
-.btn:active {
-    transform: translateY(-1px);
-    box-shadow: 0 .5rem 1rem #0003;
-}
-
-.btn--white {
-    background-color: $color-white;
-    color: $color-gray-dark;
-}
-
-.btn::after {
-    content: ''; // mandatory
-    display: inline-block;
-    /* Same as the button */
-    height: 100%;
-    width: 100%;
-    border-radius: 10rem;
-    /* behind the actual button */
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-
-    transition: all .4s;
-}
-
-.btn-white::after {
-    background-color: $color-white;
-}
-
-.btn:hover::after {
-    transform: scaleX(1.5) scaleY(1.6);
-    opacity: 0;
-}
-
-.btn--animated {
-    animation: moveInBottom .5s ease-out .75s;
-    /* Applies the properties of the 0% animation */
-    animation-fill-mode: backwards;
+        &::after {
+            background-color: $color-white;
+        }
+    }
+    
+    &::after {
+        content: ''; // mandatory
+        display: inline-block;
+        /* Same as the button */
+        height: 100%;
+        width: 100%;
+        border-radius: 10rem;
+        /* behind the actual button */
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+    
+        transition: all .4s;
+    }
+    
+    &--animated {
+        animation: moveInBottom .5s ease-out .75s;
+        /* Applies the properties of the 0% animation */
+        animation-fill-mode: backwards;
+    }
 }
