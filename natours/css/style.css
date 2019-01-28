@@ -8,10 +8,18 @@ Dark green: #28b485
 */
 
 /* The new Normalizer. Older, no longer necessary */
-* {
+*,
+*::after,
+*::before { 
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: inherit;
+}
+
+html {
+    /* Use relative unit to respect user configuration */
+    /* 100% / 16 pixels = 62.5% == 10px by default */
+    font-size: 62.5%;
 }
 
 /*  As font properties as usually inherited, we use body, not '*'
@@ -19,10 +27,12 @@ Dark green: #28b485
 body {
     font-family: "Lato", sans-serif;
     font-weight: 400;
-    font-size: 16px; /* To be changed latter */
+    font-size: 1.6rem;
     line-height: 1.7;
     color: #777;
-    padding: 30px;
+    padding: 3rem;
+
+    box-sizing: border-box;
 }
 
 .header {
@@ -41,12 +51,12 @@ body {
 
 .logo-box{
     position: absolute;
-    top: 40px;  /* from parent with position relative*/
-    left: 40px;
+    top: 4rem;  /* from parent with position relative*/
+    left: 4rem;
 }
 
 .logo{
-    height: 35px;
+    height: 3.5rem;
 }
 
 /* .logo:hover{
@@ -69,13 +79,13 @@ body {
 
     /* hack to avoid little shaking in animations*/
     backface-visibility: hidden;
-    margin-bottom: 60px;
+    margin-bottom: 6rem;
 }
 .heading-primary-main{
     display: block;
-    font-size: 60px;
+    font-size: 6rem;
     font-weight: 400;
-    letter-spacing: 35px;
+    letter-spacing: 3.5rem;
     
     animation-name: moveInLeft;
     animation-duration: 1s;
@@ -85,9 +95,10 @@ body {
 }
 .heading-primary-sub{
     display: block;
-    font-size: 20px;
+    font-size: 2rem;
     font-weight: 700;
-    letter-spacing: 17.4px;
+    letter-spacing: 1.75rem;
+    margin-left: -1.75rem;
 
     animation: moveInRight 1s ease-out;
 }
@@ -101,14 +112,14 @@ Two general types:
     /* Start */
     0% {
         opacity: 0;
-        transform: translateX(-100px);
-        /* transform: translateX(-100px) rotate(-20deg); */
+        transform: translateX(-10rem);
+        /* transform: translateX(-10rem) rotate(-20deg); */
     }
     /* 60% {
         transform: rotate(20deg);;
     } */
     80% {
-        transform: translateX(10px)
+        transform: translateX(1rem)
     }
     /* Finish */
     100% {
@@ -121,13 +132,13 @@ Two general types:
     /* Start */
     0% {
         opacity: 0;
-        transform: translateX(100px);
+        transform: translateX(10rem);
     }
-    80% {
-        transform: translateX(-10px)
+    80% { 
+        transform: translateX(-1rem)
     }
     /* Finish */
-    100% {
+    100% { 
         opacity: 1;
         transform: translate(0);
     }
@@ -136,7 +147,7 @@ Two general types:
 @keyframes moveInBottom {
     0% {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(3rem);
     }
     /* Finish */
     100% {
@@ -150,11 +161,11 @@ Two general types:
 .btn:visited {
     text-transform: uppercase;
     text-decoration: none;
-    padding: 15px 40px;
+    padding: 1.5rem 4rem;
     display: inline-block; 
     /* to center it, the parent has 'text-align: center' */
 
-    border-radius: 100px;
+    border-radius: 10rem;
     /* 'transition' has to be defined in the initial state */
     transition: all .2s;
     position: relative;
@@ -162,13 +173,13 @@ Two general types:
 
 .btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px #0003;
+    box-shadow: 0 1rem 2rem #0003;
 }
 
 /* Clicked */
 .btn:active {
     transform: translateY(-1px);
-    box-shadow: 0 5px 10px #0003;
+    box-shadow: 0 .5rem 1rem #0003;
 }
 
 .btn-white {
@@ -182,13 +193,13 @@ Two general types:
     /* Same as the button */
     height: 100%;
     width: 100%;
-    border-radius: 100px;
+    border-radius: 10rem;
     /* behind the actual button */
     position: absolute;
     top: 0;
     left: 0;
     z-index: -1;
-    
+
     transition: all .4s;
 }
 
