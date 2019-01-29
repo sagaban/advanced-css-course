@@ -1,8 +1,7 @@
 .row {
     /* Standard: 1140px */
     max-width: $grid-width;
-    background-color: #eee;
-    margin: 0 auto; // to center block elements inside other block elements
+     margin: 0 auto; // to center block elements inside other block elements
     
     &:not(:last-child) {
         margin-bottom: $gutter-vertical;
@@ -14,7 +13,6 @@
     // * -> has
     // $ -> end with
     [class^="col-"] {
-        background-color: orangered;
         float: left;
 
         &:not(:last-child){

@@ -16,7 +16,7 @@
     
     &:hover {
         transform: translateY(-3px);
-        box-shadow: 0 1rem 2rem rgba($color-back, .2);
+        box-shadow: 0 1rem 2rem rgba($color-black, .2);
 
         &::after {
             transform: scaleX(1.5) scaleY(1.6);
@@ -26,7 +26,7 @@
     
     &:active { // Clicked
         transform: translateY(-1px);
-        box-shadow: 0 .5rem 1rem rgba($color-back, .2);
+        box-shadow: 0 .5rem 1rem rgba($color-black, .2);
     }
     
     &--white {
