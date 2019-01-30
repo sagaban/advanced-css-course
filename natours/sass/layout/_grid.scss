@@ -1,7 +1,7 @@
 .row {
     /* Standard: 1140px */
     max-width: $grid-width;
-     margin: 0 auto; // to center block elements inside other block elements
+    margin: 0 auto; // to center block elements inside other block elements
     
     &:not(:last-child) {
         margin-bottom: $gutter-vertical;
