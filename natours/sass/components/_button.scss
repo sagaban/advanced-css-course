@@ -1,5 +1,6 @@
 
 .btn{
+    &,
     &:link,
     &:visited {
         font-size: $default-font-size;
@@ -13,6 +14,10 @@
         /* 'transition' has to be defined in the initial state */
         transition: all .2s;
         position: relative;
+
+        // Changes for the <button> element
+        border: none;
+        cursor: pointer;
     }
     
     &:hover {
@@ -25,7 +30,9 @@
         }
     }
     
-    &:active { // Clicked
+    &:active, 
+    &:focus { // Clicked, selected
+        outline: none;
         transform: translateY(-1px);
         box-shadow: 0 .5rem 1rem rgba($color-black, .2);
     }
