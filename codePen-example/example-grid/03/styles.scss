@@ -10,14 +10,28 @@
   
   // Implicitd grid config
   grid-auto-rows: 80px;
-  grid-auto-flow: column;
+  grid-auto-flow: row;
   grid-auto-columns: .5fr;
-
+  
+  align-items: center; // stretch* / center / end / start
+  justify-items: center; // idem
+ 
   .item {
     padding: 20px;
     color: white;
     font-family: sans-serif;
     font-size: 30px;
     background-color: orangered;
+    
+    &--4 {
+      background-color: crimson;
+      grid-row: 2 / span 3;
+      align-self: start;
+      justify-self: start;
+    }
+    &--7 {
+      background-color: palevioletred;
+      grid-column: 1 / -1;
+    }
   }
 }
