@@ -1,3 +1,5 @@
+// Method 1: LINE NUMBERS
+/*
 .container {
   width: 1000px;
   background-color: #eee;
@@ -31,4 +33,41 @@
     grid-column: 1 / -1
   }
   
+}
+*/
+
+// Method 2: LINE NAMES
+.container {
+  width: 1000px;
+  background-color: #eee;
+  display: grid;
+  margin: 20px auto;
+  color: white;
+  font-family: sans-serif;
+  
+  grid-template-rows: [header-start] 75px [header-end box-start] 150px [box-end main-start] auto [main-end footer-start] 75px [footer-end];
+  
+  grid-template-columns: repeat(3, [col-start] 1fr [col-end]) 200px [grid-end];
+  
+  grid-gap: 20px;
+  
+  div {
+    background-color: orangered;
+    padding: 20px;
+  }
+  
+  .grid-element--1 { //header
+    grid-column: col-start 1 / grid-end;
+  }
+  .grid-element--5 { //Sidebar
+    grid-row: box-start / main-end;
+    grid-column: col-end 3 / grid-end;
+  }
+  .grid-element--6 { // Main
+    min-height: 300px;
+    grid-column: col-start 1 / col-end 3;
+  }
+  .grid-element--7 {
+    grid-column: col-start 1 / grid-end;
+  }
 }
