@@ -2,19 +2,31 @@
   width: 1000px;
   margin: 30px auto;
   background-color: #ddd;
+  transform: scale(.6);
   
   display: grid;
-  grid-template-rows: repeat(2, 150px);
-  grid-template-columns: repeat(2, 1fr);
+  // grid-template-rows: repeat(2, 150px);
+  // grid-template-columns: repeat(2, 1fr);
   grid-gap: 30px;
   
   // Implicitd grid config
   grid-auto-rows: 80px;
-  grid-auto-flow: row;
+  grid-auto-flow: row dense; // dense --> avoid empty spaces
   grid-auto-columns: .5fr;
   
-  align-items: center; // stretch* / center / end / start
-  justify-items: center; // idem
+  // Aligning grid items to grid areas
+  // align-items: center; // stretch* / center / end / start
+  // justify-items: center; // idem
+  
+  //Align grid tracks to grid containers
+  grid-template-rows: repeat(2, 100px);
+  grid-template-columns: repeat(2, 200px);
+  height: 1000px;
+  
+  // start* / center / end / space-between / space-around / space-evenly
+  justify-content: center; 
+  align-content: center;
+
  
   .item {
     padding: 20px;
@@ -26,8 +38,12 @@
     &--4 {
       background-color: crimson;
       grid-row: 2 / span 3;
-      align-self: start;
-      justify-self: start;
+      //align-self: start;
+      //justify-self: start;
+    }
+    &--6 {
+      background-color: lightcoral;
+      grid-row: 2 / span 2;
     }
     &--7 {
       background-color: palevioletred;
