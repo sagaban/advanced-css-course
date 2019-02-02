@@ -37,6 +37,7 @@
 */
 
 // Method 2: LINE NAMES
+/*
 .container {
   width: 1000px;
   background-color: #eee;
@@ -70,4 +71,43 @@
   .grid-element--7 {
     grid-column: col-start 1 / grid-end;
   }
+}
+*/
+// Method 1: GRID AREAS
+.container {
+  width: 1000px;
+  background-color: #eee;
+  display: grid;
+  margin: 20px auto;
+  color: white;
+  font-family: sans-serif;
+  
+  grid-template-rows: 75px 150px auto 75px;
+  grid-template-columns: 1fr 1fr 1fr 200px;
+  grid-gap: 20px;
+  
+  grid-template-areas: "head head head head"
+                       "box box box side"
+                       "main main main side"
+                       "foot foot foot foot"; 
+  
+  div {
+    background-color: orangered;
+    padding: 20px;
+  }
+  
+  .grid-element--1 { //header
+    grid-area: head;
+  }
+  .grid-element--5 { //Sidebar
+    grid-area: side;
+  }
+  .grid-element--6 { // Main
+    min-height: 300px;
+    grid-area: main;
+  }
+  .grid-element--7 { // footer
+    grid-area: foot;
+  }
+  
 }
