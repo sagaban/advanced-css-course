@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  background-color: #ccc;
+  padding: 10px;
+  height: 500px;
+  
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  
+  flex-wrap: wrap;
+  // strecht* / center / (flex-)start / (flex-)end / space-around / space-between
+  align-content: space-between;
+}
+
+.item {
+  background-color: orangered;
+  padding: 30px;
+  margin: 5px;
+  color: #fff;
+  font-size: 40px;
+}
