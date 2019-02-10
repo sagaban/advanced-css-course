@@ -1,0 +1,35 @@
+/* The new Normalizer. Older, no longer necessary */
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    /* Use relative unit to respect user configuration */
+    /* 100% / 16 pixels = 62.5% == 10px by default */
+    /* This defines what 1rem is */
+    font-size: 62.5%;
+
+    @include respond(tab-land) {
+      font-size: 56.25%; // 1rem = 9px ==> 9 / 16 = .5625
+    }
+    
+    @include respond(tab-port) {
+      font-size: 50%; // 1rem = 8px ==> 8 / 16 = .5
+    }
+
+    // @include respond(phone) {
+    //   We want to use the same as the tablet portrait, so, won't specify it
+    // }
+
+    @include respond(big-desktop) {
+      font-size: 75%; // 1 rem = 12px ==> 17/16 = .75
+    }
+}
+
+body {
+  box-sizing: border-box;
+}

@@ -22,19 +22,3 @@
 @import "layout/navigation";
 
 @import "pages/home";
-
-/* The new Normalizer. Older, no longer necessary */
-*,
-*::after,
-*::before {
-    margin: 0;
-    padding: 0;
-    box-sizing: inherit;
-}
-
-html {
-    /* Use relative unit to respect user configuration */
-    /* 100% / 16 pixels = 62.5% == 10px by default */
-    /* This defines what 1rem is */
-    font-size: 62.5%;
-}
