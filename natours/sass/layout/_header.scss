@@ -1,5 +1,5 @@
 .header {
-    height: 95vh;
+    height: 85vh;
     /* The viewport height */
     background-image: linear-gradient(to right bottom,
         rgba($color-primary-light, 0.8),
@@ -9,18 +9,23 @@
     background-position: top;
     position: relative;
 
-    -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+        height: 95vh;
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    }
 
     // Responsive images in CSS
-    // retina screen and hight width (bigger than phones)
+    // retina screen and high width (bigger than phones)
     // or big screens
     // 37.5em --> 600px , 125em --> 2000px
-    @media  (min-resolution: 192dpi) and (min-width: 37.5em),
+    // -webkit-min-device-pixel-ratio --> Safari support
+    @media  (min-resolution: 192dpi) and (min-width: 37.5em), // or
+            (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), // or
             (min-width: 125em) { 
         background-image: linear-gradient(to right bottom,
-        rgba($color-secondary-light, 0.8),
-        rgba($color-secondary-dark, 0.8)),
+        rgba($color-primary-light, 0.8),
+        rgba($color-primary-dark, 0.8)),
         url(../img/hero.jpg);
     }
 
